@@ -1,11 +1,20 @@
+
+import 'package:afriblox/appThemes.dart';
 import 'package:afriblox/audio/audio.dart';
 import 'package:afriblox/blocks/blocks.dart';
 import 'package:afriblox/gui/model/tabItem.dart';
+import 'package:afriblox/gui/pages/backdropsPage.dart';
 import 'package:afriblox/gui/pages/spritesPage.dart';
+import 'package:afriblox/gui/widgets/customTextField.dart';
+import 'package:afriblox/gui/widgets/modesButton.dart';
+import 'package:afriblox/gui/widgets/projectValues.dart';
+import 'package:afriblox/gui/widgets/settingsDialog.dart';
+import 'package:afriblox/gui/widgets/signInButton.dart';
 import 'package:afriblox/paint/paint.dart';
 import 'package:afriblox/providers/tabProvider.dart';
 import 'package:afriblox/renderer/renderer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 
@@ -17,6 +26,7 @@ class AfribloxGUI extends StatefulWidget {
 }
 
 class _AfribloxGUIState extends State<AfribloxGUI> {
+  TextEditingController controller = TextEditingController();
 
   Widget displaySelectedTab(currentTab) {
     switch (currentTab) {
@@ -36,13 +46,9 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
   @override
   Widget build(BuildContext context) {
     String currentTab = context.watch<TabProvider>().currentTab;
+    Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> const SpritesPage()));
-        },
-      ),
       appBar: AppBar(
         //elevation: 0.0,
         toolbarHeight: 40.0,
@@ -63,42 +69,43 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
             Text("Board", style: Theme.of(context).textTheme.button!.apply(fontWeightDelta: 2),),
             const SizedBox(width: 10.0,),
             Text("Connect", style: Theme.of(context).textTheme.button!.apply(fontWeightDelta: 2),),
+            const SizedBox(width: 15.0,),
+            ProjectTitleInput(
+              controller: controller,
+              hintText: "My Project",
+              width: size.width*0.1,
+            ),
+            const SizedBox(width: 10.0,),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.save_rounded, color: calculateTextColor(Theme.of(context).scaffoldBackgroundColor),),
+            )
           ],
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 35.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Colors.white38
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Row(
-                  children: [
-                    Text("Mode", style: Theme.of(context).textTheme.button!.apply(color: Colors.white, fontWeightDelta: 1),),
-                  ],
-                ),
-              ),
+          const ModesButton(),
+          IconButton(
+            onPressed: () => showDialog(
+              context: context,
+              builder: (c) {
+                return const SettingsDialog();
+              }
             ),
+            icon: Icon(Icons.settings, color: calculateTextColor(Theme.of(context).scaffoldBackgroundColor),),
           ),
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.settings, color: Colors.white,),
+            onPressed: () {
+            },
+            icon: Icon(Icons.language_outlined, color: calculateTextColor(Theme.of(context).scaffoldBackgroundColor),),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.language_outlined, color: Colors.white,),
-          ),
+          const SignInButton()
 
         ],
       ),
       body: Row(
         children: [
           Expanded(
-            flex: 6,
+            flex: 7,
             child: Column(
               children: [
                 SizedBox(
@@ -119,7 +126,7 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                             BoxShadow(
                               offset: const Offset(0, 0),
                               spreadRadius: 3.0,
-                              blurRadius: 3.0,
+                              //blurRadius: 3.0,
                               color: isSelected ? Theme.of(context).primaryColor.withOpacity(0.3) : Colors.transparent
                             )
                           ]
@@ -129,7 +136,10 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                             context.read<TabProvider>().changeTab(tabItems[index].title!);
                           },
                           label: Text(tabItems[index].title!, style: TextStyle(color: isSelected ? Theme.of(context).primaryColor : Colors.grey),),
-                          icon: Icon(tabItems[index].iconData, color: isSelected ? Theme.of(context).primaryColor : Colors.grey,),
+                          icon: SvgPicture.asset(
+                              tabItems[index].icon!,
+                            color: isSelected ? Theme.of(context).primaryColor : Colors.grey,
+                          ),
                         ),
                       );
                     }),
@@ -151,7 +161,7 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 3,
             child: Column(
               children: [
                 SizedBox(
@@ -186,17 +196,39 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                             child: FlatButton.icon(
                               onPressed: () {  },
                               label: const Text("Upload Firmware", style: TextStyle(color: Colors.grey),),
-                              icon: const Icon(Icons.cloud_upload_outlined, color: Colors.grey,),
+                              icon: const Icon(Icons.cloud_upload_outlined, color: Colors.grey,size: 16,),
                             ),
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.auto_awesome_mosaic, color: Colors.grey,),
+                          InkWell(
+                            onTap: () {},
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                              child: SvgPicture.asset(
+                                "assets/icons/small_stage.svg",
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.auto_awesome_mosaic_outlined, color: Colors.grey,),
-                          )
+                          InkWell(
+                            onTap: () {},
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                              child: SvgPicture.asset(
+                                "assets/icons/large_stage.svg",
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                              child: SvgPicture.asset(
+                                "assets/icons/fullscreen.svg",
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -204,14 +236,17 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                 ),
                 Expanded(
                   child: Column(
-                    children: [
-                      const Expanded(
-                        flex: 65,
+                    children: const [
+                      Expanded(
+                        flex: 5,
                         child: AfribloxRenderer(),
                       ),
                       Expanded(
-                        flex: 35,
-                        child: Container(),
+                        flex: 5,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+                          child: ProjectValues(),
+                        ),
                       ),
                     ],
                   ),

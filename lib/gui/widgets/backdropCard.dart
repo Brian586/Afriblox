@@ -1,6 +1,8 @@
 import 'package:afriblox/gui/model/backdrop.dart';
+import 'package:afriblox/providers/backdropsProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 
 class BackdropCard extends StatefulWidget {
@@ -28,7 +30,12 @@ class _BackdropCardState extends State<BackdropCard> {
             isHighlighted = v;
           });
         },
-        onTap: () {},
+        onTap: () async {
+          //print(widget.backdrop!.toMap());
+          await context.read<BackdropsProvider>().addToSelectedBackdrops(widget.backdrop!);
+
+          Navigator.pop(context);
+        },
         child: Container(
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,

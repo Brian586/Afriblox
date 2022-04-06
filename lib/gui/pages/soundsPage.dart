@@ -1,4 +1,5 @@
 import 'package:afriblox/gui/model/sound.dart';
+import 'package:afriblox/gui/widgets/backArrow.dart';
 import 'package:afriblox/gui/widgets/soundCard.dart';
 import 'package:afriblox/providers/soundProvider.dart';
 import 'package:flutter/material.dart';
@@ -40,12 +41,7 @@ class _SoundsPageState extends State<SoundsPage> {
         title: Text("Choose a Sound", style: GoogleFonts.fredokaOne(),),
         centerTitle: true,
         toolbarHeight: 40.0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.grey,),
-        ),
+        leading:const BackArrow(),
         bottom: PreferredSize(
           preferredSize: Size(size.width, 50.0),
           child: Container(

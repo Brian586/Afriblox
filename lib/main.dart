@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:rive/rive.dart' as rive;
 
 import 'appThemes.dart';
 
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
 
     return DynamicTheme(
       themeCollection: themeCollection,
-      defaultThemeId: AppThemes.darkBlue,
+      defaultThemeId: AppThemes.darkRed,
       builder: (context, theme) {
         return MaterialApp(
           title: Afriblox.appName,
@@ -71,6 +72,21 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
+  // Controller for playback
+  late rive.RiveAnimationController _controller;
+
+  // Toggles between play and pause animation states
+  void _togglePlay() =>
+      setState(() => _controller.isActive = !_controller.isActive);
+
+  /// Tracks if the animation is playing by whether controller is running
+  bool get isPlaying => _controller.isActive;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = rive.SimpleAnimation('active');
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -84,6 +100,13 @@ class _SplashScreenState extends State<SplashScreen> {
           SizedBox(
               height: size.height,
               width: size.width,
+            child: rive.RiveAnimation.asset(
+              'assets/fishbaloony.riv',
+              controllers: [_controller],
+              fit: BoxFit.cover,
+              // Update the play state when the widget's initialized
+              onInit: (_) => setState(() {}),
+            ),
           ),
           Positioned(
             bottom: 0.0,

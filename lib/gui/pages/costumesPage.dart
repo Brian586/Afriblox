@@ -1,4 +1,5 @@
 import 'package:afriblox/gui/model/costume.dart';
+import 'package:afriblox/gui/widgets/backArrow.dart';
 import 'package:afriblox/gui/widgets/costumeCard.dart';
 import 'package:afriblox/providers/costumesProvider.dart';
 import 'package:flutter/material.dart';
@@ -41,12 +42,7 @@ class _CostumesPageState extends State<CostumesPage> {
         title: Text("Choose a Costume", style: GoogleFonts.fredokaOne(),),
         centerTitle: true,
         toolbarHeight: 40.0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.grey,),
-        ),
+        leading: const BackArrow(),
         bottom: PreferredSize(
           preferredSize: Size(size.width, 50.0),
           child: Container(

@@ -1,6 +1,8 @@
 import 'package:afriblox/gui/model/sprite.dart';
+import 'package:afriblox/providers/spritesProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class SpriteCard extends StatefulWidget {
   final Sprite? sprite;
@@ -29,7 +31,11 @@ class _SpriteCardState extends State<SpriteCard> {
             isHighlighted = v;
           });
         },
-        onTap: () {},
+        onTap: () async {
+          await context.read<SpritesProvider>().addToSelectedSprites(widget.sprite!);
+
+          Navigator.pop(context);
+        },
         child: Container(
           decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,

@@ -5,17 +5,51 @@ import '../gui/model/backdrop.dart';
 
 class BackdropsProvider with ChangeNotifier {
   String _backdropTag = "All";
-  String _selectedBackdrop = "";
+  bool _showBackdropPaintTab = false;
+  List<Backdrop> _selectedBackdrops = [
+    Backdrop(
+        name: "Arctic",
+        md5: "67e0db3305b3c8bac3a363b1c428892e.png",
+        type: "backdrop",
+        tags: [
+        "outdoors",
+        "cold",
+        "north pole",
+        "south pole",
+        "ice",
+        "antarctica",
+        "robert hunter"
+        ],
+        info: [
+        960,
+        720,
+        2
+        ]
+    ),
+  ];
   bool _isSearch = false;
   String _searchValue = "";
 
   String get backdropTag => _backdropTag;
-  String get selectedBackdrop => _selectedBackdrop;
+  List<Backdrop> get selectedBackdrops => _selectedBackdrops;
   bool get isSearch => _isSearch;
   String get searchValue => _searchValue;
+  bool get showBackdropPaintTab => _showBackdropPaintTab;
 
   changeBackdropTag(String tag) {
     _backdropTag = tag;
+
+    notifyListeners();
+  }
+
+  switchToBackdropPaintTab(bool value) {
+    _showBackdropPaintTab = value;
+
+    notifyListeners();
+  }
+
+  addToSelectedBackdrops(Backdrop backdrop) {
+    _selectedBackdrops.add(backdrop);
 
     notifyListeners();
   }

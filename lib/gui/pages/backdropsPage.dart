@@ -2,10 +2,12 @@
 
 import 'package:afriblox/appThemes.dart';
 import 'package:afriblox/gui/model/backdrop.dart';
+import 'package:afriblox/gui/widgets/backArrow.dart';
 import 'package:afriblox/gui/widgets/backdropCard.dart';
 import 'package:afriblox/gui/widgets/customTextField.dart';
 import 'package:afriblox/gui/widgets/progressWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -43,12 +45,7 @@ class _BackdropsPageState extends State<BackdropsPage> {
         title: Text("Backdrops", style: GoogleFonts.fredokaOne(),),
         centerTitle: true,
         toolbarHeight: 40.0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.grey,),
-        ),
+        leading: const BackArrow(),
         bottom: PreferredSize(
           preferredSize: Size(size.width, 50.0),
           child: Container(

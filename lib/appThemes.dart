@@ -23,16 +23,21 @@ const appBarTheme =  AppBarTheme(
   elevation: 5.0,
 );
 
+const inputDecorationTheme = InputDecorationTheme(
+  isDense: true,// this will remove the default content padding
+);
+
 final themeCollection = ThemeCollection(
   themes: {
-    AppThemes.lightBlue: ThemeData(primarySwatch: Colors.blue, appBarTheme: appBarTheme),
-    AppThemes.lightRed: ThemeData(primarySwatch: Colors.red, appBarTheme: appBarTheme),
-    AppThemes.lightPink: ThemeData(primarySwatch: Colors.pink, appBarTheme: appBarTheme),
-    AppThemes.lightGreen: ThemeData(primarySwatch: Colors.green, appBarTheme: appBarTheme),
-    AppThemes.darkBlue: ThemeData.dark().copyWith(primaryColor: Colors.blue),
-    AppThemes.darkRed: ThemeData.dark().copyWith(primaryColor: Colors.red),
-    AppThemes.darkPink: ThemeData.dark().copyWith(primaryColor: Colors.pink),
-    AppThemes.darkGreen: ThemeData.dark().copyWith(primaryColor: Colors.green),
+    AppThemes.lightBlue: ThemeData(primarySwatch: Colors.blue, appBarTheme: appBarTheme, inputDecorationTheme: inputDecorationTheme),
+    AppThemes.lightRed: ThemeData(primarySwatch: Colors.red, appBarTheme: appBarTheme, inputDecorationTheme: inputDecorationTheme),
+    AppThemes.lightPink: ThemeData(primarySwatch: Colors.pink, appBarTheme: appBarTheme, inputDecorationTheme: inputDecorationTheme),
+    AppThemes.lightGreen: ThemeData(primarySwatch: Colors.green, appBarTheme: appBarTheme, inputDecorationTheme: inputDecorationTheme),
+    AppThemes.darkBlue: ThemeData.dark().copyWith(primaryColor: Colors.blue, inputDecorationTheme: inputDecorationTheme),
+    AppThemes.darkRed: ThemeData.dark().copyWith(primaryColor: Colors.red, inputDecorationTheme: inputDecorationTheme),
+    AppThemes.darkPink: ThemeData.dark().copyWith(primaryColor: Colors.pink, inputDecorationTheme: inputDecorationTheme),
+    AppThemes.darkGreen: ThemeData.dark().copyWith(primaryColor: Colors.green, inputDecorationTheme: inputDecorationTheme),
   },
-  fallbackTheme: ThemeData.light(),
+  fallbackTheme: ThemeData.light().copyWith(inputDecorationTheme: inputDecorationTheme),
 );
+

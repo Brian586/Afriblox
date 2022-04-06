@@ -1,5 +1,9 @@
 import 'package:afriblox/gui/pages/soundsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../gui/widgets/actionButton.dart';
+import '../gui/widgets/customTextField.dart';
 
 
 class AfribloxAudio extends StatefulWidget {
@@ -10,11 +14,12 @@ class AfribloxAudio extends StatefulWidget {
 }
 
 class _AfribloxAudioState extends State<AfribloxAudio> {
+  TextEditingController name = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Container(
+    return SizedBox(
       height: size.height,
       width: size.width,
       child: Row(
@@ -22,23 +27,180 @@ class _AfribloxAudioState extends State<AfribloxAudio> {
           Stack(
             children: [
               Container(
+                width: size.width*0.08,
                 height: size.height,
-                width: 60.0,
+                color: Colors.white,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [],
+                  ),
+                ),
               ),
               Positioned(
                 bottom: 10.0,
                 left: 10.0,
-                child: RaisedButton(
+                child: ActionButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> const SoundsPage()));
                   },
-                  child: const Icon(Icons.volume_up_rounded, color: Colors.white,),
+                  imageUrl: "assets/icons/add_sound.svg",
                 ),
               )
             ],
           ),
           Expanded(
-            child: Container(),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Text("Sound", style: TextStyle(fontWeight: FontWeight.w300),),
+                      const SizedBox(width: 5.0,),
+                      ValueTextField(
+                        controller: name,
+                        width: size.width*0.07,
+                        hintText: "Name",
+                      ),
+                      const SizedBox(width: 10.0,),
+                      Container(
+                        height: 35.0,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(3.0),
+                            border: Border.all(
+                                width: 0.3,
+                                color: Colors.grey
+                            )
+                        ),
+                        child: Center(
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {},
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                  child: SvgPicture.asset(
+                                    "assets/icons/undo.svg",
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                              const VerticalDivider(color: Colors.grey, width: 0.01,),
+                              InkWell(
+                                onTap: () {},
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                  child: SvgPicture.asset(
+                                    "assets/icons/redo.svg",
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30.0,),
+                  Container(
+                    height: 350.0,
+                    width: size.width,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(7.0),
+                        border: Border.all(
+                            width: 0.3,
+                            color: Theme.of(context).primaryColor
+                        )
+                    ),
+                  ),
+                  const SizedBox(height: 30.0,),
+                  Row(
+                    children: [
+                      ActionButton(
+                        onPressed: () {},
+                        imageUrl: "assets/icons/play.svg",
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          "assets/icons/fast_foward.svg",
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          "assets/icons/fast_rewind.svg",
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          "assets/icons/sound_louder.svg",
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          "assets/icons/sound_softer.svg",
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          "assets/icons/mute.svg",
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          "assets/icons/sound_fade_in.svg",
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          "assets/icons/sound_fade_out.svg",
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          "assets/icons/sound_reverse.svg",
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: SvgPicture.asset(
+                          "assets/icons/sound_robot.svg",
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+
+                    ],
+                  )
+                ],
+              ),
+            ),
           )
         ],
       ),

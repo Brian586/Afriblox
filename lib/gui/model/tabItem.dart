@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 class TabItem {
   final String? title;
-  final IconData? iconData;
+  final String? icon;
 
-  TabItem({this.iconData, this.title});
+  TabItem({this.icon, this.title});
 }
 
 final List<TabItem> tabItems = [
   TabItem(
     title: "Code",
-    iconData: Icons.code
+    icon: "assets/icons/code.svg"
   ),
   TabItem(
       title: "Costumes",
-      iconData: Icons.brush_rounded
+      icon: "assets/icons/costume.svg"
   ),
   TabItem(
       title: "Sounds",
-      iconData: Icons.volume_up_rounded
+      icon: "assets/icons/sounds.svg"
   ),
 ];
