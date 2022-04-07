@@ -61,7 +61,7 @@ class _ProjectValuesState extends State<ProjectValues> {
                                 children: [
                                   Row(
                                     children: [
-                                      const Text("Sprite", style: TextStyle(fontWeight: FontWeight.w300),),
+                                      const Text("Sprite", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 10.0),),
                                       const SizedBox(width: 5.0,),
                                       ValueTextField(
                                         controller: name,
@@ -73,11 +73,11 @@ class _ProjectValuesState extends State<ProjectValues> {
                                   const SizedBox(width: 5.0,),
                                   Row(
                                     children: [
-                                      const Text("x", style: TextStyle(fontWeight: FontWeight.w300),),
+                                      const Text("x", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 10.0),),
                                       const SizedBox(width: 5.0,),
                                       ValueTextField(
                                         controller: x,
-                                        width: size.width*0.03,
+                                        width: size.width*0.035,
                                         hintText: "",
                                       ),
                                     ],
@@ -85,11 +85,11 @@ class _ProjectValuesState extends State<ProjectValues> {
                                   const SizedBox(width: 5.0,),
                                   Row(
                                     children: [
-                                      const Text("y", style: TextStyle(fontWeight: FontWeight.w300),),
+                                      const Text("y", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 10.0),),
                                       const SizedBox(width: 5.0,),
                                       ValueTextField(
                                         controller: y,
-                                        width: size.width*0.03,
+                                        width: size.width*0.035,
                                         hintText: "",
                                       ),
                                     ],
@@ -102,7 +102,7 @@ class _ProjectValuesState extends State<ProjectValues> {
                                 children: [
                                   Row(
                                     children: [
-                                      const Text("Show", style: TextStyle(fontWeight: FontWeight.w300),),
+                                      const Text("Show", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 10.0),),
                                       const SizedBox(width: 5.0,),
                                       Container(
                                         height: 35.0,
@@ -134,11 +134,11 @@ class _ProjectValuesState extends State<ProjectValues> {
                                   const SizedBox(width: 5.0,),
                                   Row(
                                     children: [
-                                      const Text("Size", style: TextStyle(fontWeight: FontWeight.w300),),
+                                      const Text("Size", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 10.0),),
                                       const SizedBox(width: 5.0,),
                                       ValueTextField(
                                         controller: spriteSize,
-                                        width: size.width*0.03,
+                                        width: size.width*0.035,
                                         hintText: "",
                                       ),
                                     ],
@@ -146,11 +146,11 @@ class _ProjectValuesState extends State<ProjectValues> {
                                   const SizedBox(width: 5.0,),
                                   Row(
                                     children: [
-                                      const Text("direction", style: TextStyle(fontWeight: FontWeight.w300),),
+                                      const Text("direction", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 10.0),),
                                       const SizedBox(width: 5.0,),
                                       ValueTextField(
                                         controller: direction,
-                                        width: size.width*0.03,
+                                        width: size.width*0.035,
                                         hintText: "",
                                       ),
                                     ],
@@ -173,7 +173,7 @@ class _ProjectValuesState extends State<ProjectValues> {
                           child: GridView.count(
                             shrinkWrap: true,
                             physics: const BouncingScrollPhysics(),
-                            crossAxisCount: 5,
+                            crossAxisCount: 4,
                             children: List.generate(sprites.length, (index) {
                               Sprite sprite = sprites[index];
                               bool spriteIsSvg = sprite.costumes![0]["dataFormat"] == "svg";
@@ -188,12 +188,12 @@ class _ProjectValuesState extends State<ProjectValues> {
                                             borderRadius: BorderRadius.circular(7.0),
                                             border: Border.all(
                                                 color: Theme.of(context).primaryColor.withOpacity(0.4),
-                                                width: 3.0
+                                                width: 4.0
                                             )
                                         ),
                                       child: Container(
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(7.0),
+                                            borderRadius: BorderRadius.circular(5.0),
                                           border: Border.all(
                                             color: Theme.of(context).primaryColor,
                                             width: 1.0
@@ -210,7 +210,7 @@ class _ProjectValuesState extends State<ProjectValues> {
                                             Container(
                                               width: size.width,
                                               decoration: BoxDecoration(
-                                                  borderRadius: const BorderRadius.vertical(bottom: Radius.circular(7.0)),
+                                                  borderRadius: const BorderRadius.vertical(bottom: Radius.circular(5.0)),
                                                 color: Theme.of(context).primaryColor,
                                               ),
                                               child: Padding(
@@ -235,7 +235,7 @@ class _ProjectValuesState extends State<ProjectValues> {
                                               color: Theme.of(context).primaryColor,
                                               border: Border.all(color: Colors.grey, width: 0.5)
                                           ),
-                                          child: Icon(Icons.cancel_outlined, color: Colors.white, size: 10.0,),
+                                          child: Icon(Icons.clear, color: Colors.white, size: 10.0,),
                                         ),
                                       ),
                                     )

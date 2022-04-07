@@ -11,7 +11,7 @@ class ModesButton extends StatelessWidget {
         height: 35.0,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5.0),
-            color: Colors.white38
+            color: Colors.grey.withOpacity(0.5)
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),

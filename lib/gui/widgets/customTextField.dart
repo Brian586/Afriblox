@@ -162,7 +162,7 @@ class _ProjectTitleInputState extends State<ProjectTitleInput> {
             BoxShadow(
                 offset: const Offset(0, 0),
                 spreadRadius: 3.0,
-                blurRadius: 3.0,
+                //blurRadius: 3.0,
                 color: isSelected ? Theme.of(context).primaryColor.withOpacity(0.3) : Colors.transparent
             )
           ]

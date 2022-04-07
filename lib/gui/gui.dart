@@ -105,7 +105,7 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
       body: Row(
         children: [
           Expanded(
-            flex: 7,
+            flex: 65,
             child: Column(
               children: [
                 SizedBox(
@@ -161,7 +161,7 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 35,
             child: Column(
               children: [
                 SizedBox(

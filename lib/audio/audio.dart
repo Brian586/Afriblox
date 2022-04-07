@@ -101,6 +101,67 @@ class _AfribloxAudioState extends State<AfribloxAudio> {
                           ),
                         ),
                       ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/sound_copy.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Copy", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/sound_paste.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Paste", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/copy_to_new.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Copy to new", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/sound_delete.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Delete", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
                     ],
                   ),
                   const SizedBox(height: 30.0,),
@@ -126,73 +187,118 @@ class _AfribloxAudioState extends State<AfribloxAudio> {
                       const SizedBox(width: 20,),
                       InkWell(
                         onTap: () {},
-                        child: SvgPicture.asset(
-                          "assets/icons/fast_foward.svg",
-                          color: Theme.of(context).primaryColor,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/fast_foward.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            const Text("Faster", style: TextStyle(fontSize: 11.0),)
+                          ],
                         ),
                       ),
                       const SizedBox(width: 20,),
                       InkWell(
                         onTap: () {},
-                        child: SvgPicture.asset(
-                          "assets/icons/fast_rewind.svg",
-                          color: Theme.of(context).primaryColor,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/fast_rewind.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            const Text("Slower", style: TextStyle(fontSize: 11.0),)
+                          ],
                         ),
                       ),
                       const SizedBox(width: 20,),
                       InkWell(
                         onTap: () {},
-                        child: SvgPicture.asset(
-                          "assets/icons/sound_louder.svg",
-                          color: Theme.of(context).primaryColor,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/sound_louder.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            const Text("Louder", style: TextStyle(fontSize: 11.0),)
+                          ],
                         ),
                       ),
                       const SizedBox(width: 20,),
                       InkWell(
                         onTap: () {},
-                        child: SvgPicture.asset(
-                          "assets/icons/sound_softer.svg",
-                          color: Theme.of(context).primaryColor,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/sound_softer.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            const Text("Softer", style: TextStyle(fontSize: 11.0),)
+                          ],
                         ),
                       ),
                       const SizedBox(width: 20,),
                       InkWell(
                         onTap: () {},
-                        child: SvgPicture.asset(
-                          "assets/icons/mute.svg",
-                          color: Theme.of(context).primaryColor,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/mute.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            const Text("Mute", style: TextStyle(fontSize: 11.0),)
+                          ],
                         ),
                       ),
                       const SizedBox(width: 20,),
                       InkWell(
                         onTap: () {},
-                        child: SvgPicture.asset(
-                          "assets/icons/sound_fade_in.svg",
-                          color: Theme.of(context).primaryColor,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/sound_fade_in.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            const Text("Fade In", style: TextStyle(fontSize: 11.0),)
+                          ],
                         ),
                       ),
                       const SizedBox(width: 20,),
                       InkWell(
                         onTap: () {},
-                        child: SvgPicture.asset(
-                          "assets/icons/sound_fade_out.svg",
-                          color: Theme.of(context).primaryColor,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/sound_fade_out.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            const Text("Fade Out", style: TextStyle(fontSize: 11.0),)
+                          ],
                         ),
                       ),
                       const SizedBox(width: 20,),
                       InkWell(
                         onTap: () {},
-                        child: SvgPicture.asset(
-                          "assets/icons/sound_reverse.svg",
-                          color: Theme.of(context).primaryColor,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/sound_reverse.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            const Text("Reverse", style: TextStyle(fontSize: 11.0),)
+                          ],
                         ),
                       ),
                       const SizedBox(width: 20,),
                       InkWell(
                         onTap: () {},
-                        child: SvgPicture.asset(
-                          "assets/icons/sound_robot.svg",
-                          color: Theme.of(context).primaryColor,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/sound_robot.svg",
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            const Text("Robot", style: TextStyle(fontSize: 11.0),)
+                          ],
                         ),
                       ),
 
