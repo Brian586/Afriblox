@@ -17,6 +17,7 @@ import 'package:provider/provider.dart';
 import 'package:rive/rive.dart' as rive;
 
 import 'appThemes.dart';
+import 'gui/widgets/settingsDialog.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,6 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   // Controller for playback
   late rive.RiveAnimationController _controller;
+  late rive.RiveAnimationController _settingsController;
 
   // Toggles between play and pause animation states
   void _togglePlay() =>
@@ -85,7 +87,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = rive.SimpleAnimation('active');
+    _controller = rive.SimpleAnimation('Animation 1');
+    _settingsController = rive.SimpleAnimation('active');
   }
   @override
   Widget build(BuildContext context) {
@@ -101,7 +104,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: size.height,
               width: size.width,
             child: rive.RiveAnimation.asset(
-              'assets/fishbaloony.riv',
+              'assets/sky_diver.riv',
               controllers: [_controller],
               fit: BoxFit.cover,
               // Update the play state when the widget's initialized
@@ -146,13 +149,28 @@ class _SplashScreenState extends State<SplashScreen> {
                   children: [
                     TextButton.icon(
                       onPressed: () {},
-                      label: Text("Login", style: Theme.of(context).textTheme.bodyLarge,),
+                      label: Text("Login", style: Theme.of(context).textTheme.bodyLarge!.apply(color: Colors.white),),
                       icon: const Icon(Icons.login, color: Colors.white,),
                     ),
                     TextButton.icon(
-                      onPressed: () {},
-                      label: Text("Settings", style: Theme.of(context).textTheme.bodyLarge,),
-                      icon: const Icon(Icons.settings, color: Colors.white,),
+                      onPressed: () => showDialog(
+                          context: context,
+                          builder: (c) {
+                            return const SettingsDialog();
+                          }
+                      ),
+                      label: Text("Settings", style: Theme.of(context).textTheme.bodyLarge!.apply(color: Colors.white),),
+                      icon: SizedBox(
+                        height: 30.0,
+                        width: 30.0,
+                        child: rive.RiveAnimation.asset(
+                          'assets/settings.riv',
+                          controllers: [_settingsController],
+                          fit: BoxFit.contain,
+                          // Update the play state when the widget's initialized
+                          onInit: (_) => setState(() {}),
+                        ),
+                      ),
                     ),
                     RaisedButton(
                       onPressed: () {
