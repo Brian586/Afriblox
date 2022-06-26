@@ -43,6 +43,8 @@ dependencies:
   flutter_svg: ^1.0.3
   dynamic_themes: ^1.1.0
   rive: ^0.8.4
+  flutter_audio_waveforms: ^1.2.1+5
+  wav: ^1.1.0
   #webview_windows: ^0.1.5
 
 dev_dependencies:
@@ -73,6 +75,7 @@ flutter:
     - assets/static/
     - assets/libraries/
     - assets/icons/
+    - assets/blocks/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

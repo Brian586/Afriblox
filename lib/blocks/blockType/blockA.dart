@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 //Add this CustomPaint widget to the Widget Tree
 
 //Copy this CustomPainter code to the Bottom of the File
-class RPSCustomPainter extends CustomPainter {
+class BlockA extends CustomPainter {
   double? extensionLength;
+  Color? color;
 
-  RPSCustomPainter({this.extensionLength});
+  BlockA({
+    @required this.extensionLength,
+    @required this.color});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -207,11 +210,11 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_1_stroke = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = size.width * 0.01041667;
-    paint_1_stroke.color = Colors.blue.withOpacity(1.0);
+    paint_1_stroke.color = color!.withOpacity(1.0);
     canvas.drawPath(path_1, paint_1_stroke);
 
     Paint paint_1_fill = Paint()..style = PaintingStyle.fill;
-    paint_1_fill.color = Colors.blue.withOpacity(1.0);
+    paint_1_fill.color = color!.withOpacity(1.0);
     canvas.drawPath(path_1, paint_1_fill);
   }
 

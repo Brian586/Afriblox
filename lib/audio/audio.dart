@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:afriblox/gui/pages/soundsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_audio_waveforms/flutter_audio_waveforms.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wav/wav.dart';
 
 import '../gui/widgets/actionButton.dart';
 import '../gui/widgets/customTextField.dart';
@@ -15,6 +19,41 @@ class AfribloxAudio extends StatefulWidget {
 
 class _AfribloxAudioState extends State<AfribloxAudio> {
   TextEditingController name = TextEditingController();
+  List<double> samples = [];
+  bool loading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    readAudioFile();
+  }
+
+  readAudioFile() async {
+    setState(() {
+      loading = true;
+    });
+
+    File file = File("assets/static/9cd340d9d568b1479f731e69e103b3ce.wav");
+
+    final bytes = await file.readAsBytes();
+
+    var shorts = bytes.buffer.asInt16List();
+
+    //print(shorts);
+
+    print(shorts.length);
+
+    var finalList = shorts.toList();
+
+    finalList.forEach((element) {
+      samples.add(element.toDouble());
+    });
+
+    setState(() {
+      loading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -29,7 +68,7 @@ class _AfribloxAudioState extends State<AfribloxAudio> {
               Container(
                 width: size.width*0.08,
                 height: size.height,
-                color: Colors.white,
+                //color: Colors.white,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [],
@@ -176,6 +215,16 @@ class _AfribloxAudioState extends State<AfribloxAudio> {
                             color: Theme.of(context).primaryColor
                         )
                     ),
+                      child: loading ? Text("Loading...") : Center(
+                        child: PolygonWaveform(
+                        samples: samples,
+                        style: PaintingStyle.fill,
+                        inactiveColor: Theme.of(context).primaryColor,
+                        activeColor: Theme.of(context).primaryColor,
+                        height: 250.0,
+                        width: 700.0,
+                    ),
+                      ),
                   ),
                   const SizedBox(height: 30.0,),
                   Row(

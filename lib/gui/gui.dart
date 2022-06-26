@@ -1,4 +1,3 @@
-
 import 'package:afriblox/appThemes.dart';
 import 'package:afriblox/audio/audio.dart';
 import 'package:afriblox/blocks/blocks.dart';
@@ -16,7 +15,6 @@ import 'package:afriblox/renderer/renderer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-
 
 class AfribloxGUI extends StatefulWidget {
   const AfribloxGUI({Key? key}) : super(key: key);
@@ -41,8 +39,6 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     String currentTab = context.watch<TabProvider>().currentTab;
@@ -55,30 +51,80 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
         //backgroundColor: Colors.black,
         title: Row(
           children: [
-            Image.asset("assets/afribloxLogo.jpg", height: 30.0, fit: BoxFit.contain,),
-            const SizedBox(width: 10.0,),
+            Image.asset(
+              "assets/afribloxLogo.jpg",
+              height: 30.0,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
             InkWell(
-              onTap: () {
-              },
-                child: Text("File", style: Theme.of(context).textTheme.button!.apply(fontWeightDelta: 2),)),
-            const SizedBox(width: 10.0,),
-            Text("Edit", style: Theme.of(context).textTheme.button!.apply(fontWeightDelta: 2),),
-            const SizedBox(width: 10.0,),
-            Text("Tutorials", style: Theme.of(context).textTheme.button!.apply(fontWeightDelta: 2),),
-            const SizedBox(width: 10.0,),
-            Text("Board", style: Theme.of(context).textTheme.button!.apply(fontWeightDelta: 2),),
-            const SizedBox(width: 10.0,),
-            Text("Connect", style: Theme.of(context).textTheme.button!.apply(fontWeightDelta: 2),),
-            const SizedBox(width: 15.0,),
+                onTap: () {},
+                child: Text(
+                  "File",
+                  style: Theme.of(context)
+                      .textTheme
+                      .button!
+                      .apply(fontWeightDelta: 2, color: Colors.white),
+                )),
+            const SizedBox(
+              width: 10.0,
+            ),
+            Text(
+              "Edit",
+              style: Theme.of(context)
+                  .textTheme
+                  .button!
+                  .apply(fontWeightDelta: 2, color: Colors.white),
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
+            Text(
+              "Tutorials",
+              style: Theme.of(context)
+                  .textTheme
+                  .button!
+                  .apply(fontWeightDelta: 2, color: Colors.white),
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
+            Text(
+              "Board",
+              style: Theme.of(context)
+                  .textTheme
+                  .button!
+                  .apply(fontWeightDelta: 2, color: Colors.white),
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
+            Text(
+              "Connect",
+              style: Theme.of(context)
+                  .textTheme
+                  .button!
+                  .apply(fontWeightDelta: 2, color: Colors.white),
+            ),
+            const SizedBox(
+              width: 15.0,
+            ),
             ProjectTitleInput(
               controller: controller,
               hintText: "My Project",
-              width: size.width*0.1,
+              width: size.width * 0.1,
             ),
-            const SizedBox(width: 10.0,),
+            const SizedBox(
+              width: 10.0,
+            ),
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.save_rounded, color: calculateTextColor(Theme.of(context).scaffoldBackgroundColor),),
+              icon: Icon(
+                Icons.save_rounded,
+                color: Colors.white,
+              ),
             )
           ],
         ),
@@ -86,20 +132,23 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
           const ModesButton(),
           IconButton(
             onPressed: () => showDialog(
-              context: context,
-              builder: (c) {
-                return const SettingsDialog();
-              }
+                context: context,
+                builder: (c) {
+                  return const SettingsDialog();
+                }),
+            icon: Icon(
+              Icons.settings,
+              color: Colors.white,
             ),
-            icon: Icon(Icons.settings, color: calculateTextColor(Theme.of(context).scaffoldBackgroundColor),),
           ),
           IconButton(
-            onPressed: () {
-            },
-            icon: Icon(Icons.language_outlined, color: calculateTextColor(Theme.of(context).scaffoldBackgroundColor),),
+            onPressed: () {},
+            icon: Icon(
+              Icons.language_outlined,
+              color: Colors.white,
+            ),
           ),
           const SignInButton()
-
         ],
       ),
       body: Row(
@@ -119,26 +168,43 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                       return Container(
                         height: 35.0,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: const BorderRadius.vertical(top: Radius.circular(7.0)),
-                          border: Border.all(color: isSelected ? Theme.of(context).primaryColor : Colors.grey, width: 0.4),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: const Offset(0, 0),
-                              spreadRadius: 3.0,
-                              //blurRadius: 3.0,
-                              color: isSelected ? Theme.of(context).primaryColor.withOpacity(0.3) : Colors.transparent
-                            )
-                          ]
-                        ),
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            borderRadius: const BorderRadius.vertical(
+                                top: Radius.circular(7.0)),
+                            border: Border.all(
+                                color: isSelected
+                                    ? Theme.of(context).primaryColor
+                                    : Colors.grey,
+                                width: 0.4),
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: const Offset(0, 0),
+                                  spreadRadius: 3.0,
+                                  //blurRadius: 3.0,
+                                  color: isSelected
+                                      ? Theme.of(context)
+                                          .primaryColor
+                                          .withOpacity(0.3)
+                                      : Colors.transparent)
+                            ]),
                         child: FlatButton.icon(
                           onPressed: () {
-                            context.read<TabProvider>().changeTab(tabItems[index].title!);
+                            context
+                                .read<TabProvider>()
+                                .changeTab(tabItems[index].title!);
                           },
-                          label: Text(tabItems[index].title!, style: TextStyle(color: isSelected ? Theme.of(context).primaryColor : Colors.grey),),
+                          label: Text(
+                            tabItems[index].title!,
+                            style: TextStyle(
+                                color: isSelected
+                                    ? Theme.of(context).primaryColor
+                                    : Colors.grey),
+                          ),
                           icon: SvgPicture.asset(
-                              tabItems[index].icon!,
-                            color: isSelected ? Theme.of(context).primaryColor : Colors.grey,
+                            tabItems[index].icon!,
+                            color: isSelected
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey,
                           ),
                         ),
                       );
@@ -148,12 +214,9 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(topRight: Radius.circular(10.0)),
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 0.5
-                      )
-                    ),
+                        borderRadius: const BorderRadius.only(
+                            topRight: Radius.circular(10.0)),
+                        border: Border.all(color: Colors.grey, width: 0.5)),
                     child: displaySelectedTab(currentTab),
                   ),
                 )
@@ -174,11 +237,17 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                         children: [
                           IconButton(
                             onPressed: () {},
-                            icon: const Icon(Icons.play_arrow_rounded, color: Colors.green,),
+                            icon: const Icon(
+                              Icons.play_arrow_rounded,
+                              color: Colors.green,
+                            ),
                           ),
                           IconButton(
                             onPressed: () {},
-                            icon: const Icon(Icons.stop_rounded, color: Colors.red,),
+                            icon: const Icon(
+                              Icons.stop_rounded,
+                              color: Colors.red,
+                            ),
                           )
                         ],
                       ),
@@ -188,21 +257,26 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                           Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5.0),
-                                border: Border.all(
-                                    color: Colors.grey,
-                                    width: 1.0
-                                )
-                            ),
+                                border:
+                                    Border.all(color: Colors.grey, width: 1.0)),
                             child: FlatButton.icon(
-                              onPressed: () {  },
-                              label: const Text("Upload Firmware", style: TextStyle(color: Colors.grey),),
-                              icon: const Icon(Icons.cloud_upload_outlined, color: Colors.grey,size: 16,),
+                              onPressed: () {},
+                              label: const Text(
+                                "Upload Firmware",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              icon: const Icon(
+                                Icons.cloud_upload_outlined,
+                                color: Colors.grey,
+                                size: 16,
+                              ),
                             ),
                           ),
                           InkWell(
                             onTap: () {},
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5.0),
                               child: SvgPicture.asset(
                                 "assets/icons/small_stage.svg",
                                 color: Colors.grey,
@@ -212,7 +286,8 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                           InkWell(
                             onTap: () {},
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5.0),
                               child: SvgPicture.asset(
                                 "assets/icons/large_stage.svg",
                                 color: Colors.grey,
@@ -222,7 +297,8 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                           InkWell(
                             onTap: () {},
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5.0),
                               child: SvgPicture.asset(
                                 "assets/icons/fullscreen.svg",
                                 color: Colors.grey,
@@ -244,7 +320,8 @@ class _AfribloxGUIState extends State<AfribloxGUI> {
                       Expanded(
                         flex: 5,
                         child: Padding(
-                          padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+                          padding: EdgeInsets.only(
+                              left: 10.0, right: 10.0, top: 10.0),
                           child: ProjectValues(),
                         ),
                       ),

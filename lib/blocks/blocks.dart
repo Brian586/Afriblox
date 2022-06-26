@@ -1,4 +1,5 @@
-import 'package:afriblox/blocks/design.dart';
+import 'package:afriblox/blocks/blocks/move.dart';
+import 'package:afriblox/blocks/blocks/turnCW.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -40,32 +41,36 @@ class _AfribloxBlocksState extends State<AfribloxBlocks> {
             width: 0.2,
             color: Colors.grey,
           ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CustomPaint(
-                  size: Size(
-                      100.0,
-                      (100.0 * 0.3645833333333333)
-                          .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                  painter: RPSCustomPainter(),
-                  child:
-                      Container(height: 35.0, width: 96.0, child: Text("data")),
-                ),
-                CustomPaint(
-                  size: Size(
-                      100.0,
-                      (100.0 * 0.3645833333333333)
-                          .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                  painter: RPSCustomPainter(extensionLength: 200.0),
-                  child: Container(
-                      height: 35.0,
-                      width: 96.0,
-                      child: Center(child: Text("data"))),
-                )
-              ],
+          SizedBox(
+            width: 300.0,
+            height: size.height,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 5.0, top: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    "Motion",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Move(),
+                  SizedBox(
+                    height: 5.0,
+                  ),
+                  TurnCW(),
+                ],
+              ),
             ),
+          ),
+          const VerticalDivider(
+            width: 0.2,
+            color: Colors.grey,
+          ),
+          Expanded(
+            child: Container(),
           )
         ],
       ),

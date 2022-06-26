@@ -17,10 +17,10 @@ class BackArrow extends StatelessWidget {
         children: [
           SvgPicture.asset(
               "assets/icons/back.svg",
-              color: Colors.grey,
+              color: Colors.white,
               semanticsLabel: "icon--back"
           ),
-          Text("Back", style: TextStyle(color: calculateTextColor(Theme.of(context).scaffoldBackgroundColor)),)
+          Text("Back", style: TextStyle(color: Colors.white),)
         ],
       ),
     );

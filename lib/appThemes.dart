@@ -17,11 +17,13 @@ Color calculateTextColor(Color background) {
   return background.computeLuminance() >= 0.5 ? Colors.black : Colors.white;
 }
 
-const appBarTheme =  AppBarTheme(
-  backgroundColor: Colors.white,
-  titleTextStyle: TextStyle(color: Colors.black, fontSize: 20.0),
-  elevation: 5.0,
-);
+AppBarTheme appBarTheme(Color color) {
+  return AppBarTheme(
+    backgroundColor: color,
+    titleTextStyle: TextStyle(color: Colors.white, fontSize: 20.0),
+    elevation: 5.0,
+  );
+}
 
 const inputDecorationTheme = InputDecorationTheme(
   isDense: true,// this will remove the default content padding
@@ -29,10 +31,10 @@ const inputDecorationTheme = InputDecorationTheme(
 
 final themeCollection = ThemeCollection(
   themes: {
-    AppThemes.lightBlue: ThemeData(primarySwatch: Colors.blue, appBarTheme: appBarTheme, inputDecorationTheme: inputDecorationTheme),
-    AppThemes.lightRed: ThemeData(primarySwatch: Colors.red, appBarTheme: appBarTheme, inputDecorationTheme: inputDecorationTheme),
-    AppThemes.lightPink: ThemeData(primarySwatch: Colors.pink, appBarTheme: appBarTheme, inputDecorationTheme: inputDecorationTheme),
-    AppThemes.lightGreen: ThemeData(primarySwatch: Colors.green, appBarTheme: appBarTheme, inputDecorationTheme: inputDecorationTheme),
+    AppThemes.lightBlue: ThemeData(primarySwatch: Colors.blue, appBarTheme: appBarTheme(Colors.blue), inputDecorationTheme: inputDecorationTheme),
+    AppThemes.lightRed: ThemeData(primarySwatch: Colors.red, appBarTheme: appBarTheme(Colors.red), inputDecorationTheme: inputDecorationTheme),
+    AppThemes.lightPink: ThemeData(primarySwatch: Colors.pink, appBarTheme: appBarTheme(Colors.pink), inputDecorationTheme: inputDecorationTheme),
+    AppThemes.lightGreen: ThemeData(primarySwatch: Colors.green, appBarTheme: appBarTheme(Colors.green), inputDecorationTheme: inputDecorationTheme),
     AppThemes.darkBlue: ThemeData.dark().copyWith(primaryColor: Colors.blue, inputDecorationTheme: inputDecorationTheme),
     AppThemes.darkRed: ThemeData.dark().copyWith(primaryColor: Colors.red, inputDecorationTheme: inputDecorationTheme),
     AppThemes.darkPink: ThemeData.dark().copyWith(primaryColor: Colors.pink, inputDecorationTheme: inputDecorationTheme),
