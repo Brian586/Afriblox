@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../blockType/blockA.dart';
 import '../widgets/blockTextField.dart';
 
-class TurnCW extends StatefulWidget {
-  const TurnCW({Key? key}) : super(key: key);
+
+class TurnCCW extends StatefulWidget {
+  const TurnCCW({Key? key}) : super(key: key);
 
   @override
-  State<TurnCW> createState() => _TurnCWState();
+  State<TurnCCW> createState() => _TurnCCWState();
 }
 
-class _TurnCWState extends State<TurnCW> {
+class _TurnCCWState extends State<TurnCCW> {
   TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _TurnCWState extends State<TurnCW> {
               children: [
                 const Text("turn", style: TextStyle(color: Colors.white, fontSize: 11.0, fontWeight: FontWeight.w600),),
                 const SizedBox(width: 5.0,),
-                SvgPicture.asset("assets/icons/rotate_right.svg"),
+                SvgPicture.asset("assets/icons/rotate_left.svg"),
                 const SizedBox(width: 5.0,),
                 BlockTextField(
                   controller: controller,

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class BlockTextField extends StatefulWidget {
   final TextEditingController? controller;
   final Color? focusColor;
 
-  const BlockTextField({Key? key, this.controller, this.focusColor}) : super(key: key);
+
+  BlockTextField({Key? key, this.controller, this.focusColor}) : super(key: key);
 
   @override
   State<BlockTextField> createState() => _BlockTextFieldState();
@@ -20,7 +22,7 @@ class _BlockTextFieldState extends State<BlockTextField> {
       width: 26.0,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(20.0),
           boxShadow: [
             BoxShadow(
                 offset: const Offset(0, 0),
@@ -43,17 +45,17 @@ class _BlockTextFieldState extends State<BlockTextField> {
             padding: const EdgeInsets.only(left: 5.0),
             child: TextFormField(
               controller: widget.controller,
+              cursorWidth: 1.0,
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.center,
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(4),
+                // FilteringTextInputFormatter.digitsOnly//TODO Remember to add - support
+              ],
               style: TextStyle(fontSize: 10.0, color: Colors.black),
               cursorColor: widget.focusColor,
               decoration: InputDecoration.collapsed(
                 hintText: "",
-                // border: OutlineInputBorder(
-                //     borderRadius: BorderRadius.circular(15.0),
-                //     borderSide: BorderSide(
-                //       width: 1.0,
-                //       color: focusColor!
-                //     )
-                // ),
                 //prefixIcon: Icon(data, color: Colors.grey[400],),
                 focusColor: widget.focusColor,
                 // hintText: hintText,

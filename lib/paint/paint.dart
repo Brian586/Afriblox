@@ -1,5 +1,6 @@
 import 'package:afriblox/gui/pages/costumesPage.dart';
 import 'package:afriblox/gui/widgets/actionButton.dart';
+import 'package:afriblox/paint/models/paintTool.dart';
 import 'package:afriblox/providers/backdropsProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,6 +19,8 @@ class AfribloxPaint extends StatefulWidget {
 
 class _AfribloxPaintState extends State<AfribloxPaint> {
   TextEditingController name = TextEditingController();
+  String selectedTool = "Select";
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -106,23 +109,313 @@ class _AfribloxPaintState extends State<AfribloxPaint> {
                         child: Center(
                           child: Row(
                             children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.undo_rounded, color: Colors.grey, size: 16,),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                child: SvgPicture.asset(
+                                  "assets/icons/undo.svg",
+                                  color: Colors.grey,
+                                  height: 25.0,
+                                  width: 25.0,
+                                ),
                               ),
                               const VerticalDivider(color: Colors.grey, width: 0.01,),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.redo_rounded, color: Colors.grey,size: 16,),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                child: SvgPicture.asset(
+                                  "assets/icons/redo.svg",
+                                  color: Colors.grey,
+                                  height: 25.0,
+                                  width: 25.0,
+                                ),
                               ),
                             ],
                           ),
                         ),
                       ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/group.svg",
+                              //color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Group", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/ungroup.svg",
+                              //color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Ungroup", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/send_forward.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Forward", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/send_backward.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Backward", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/send_front.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Front", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/send_back.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Back", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
                     ],
                   ),
-                  const SizedBox(width: 5.0,),
+                  const SizedBox(height: 5.0,),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text("Fill", style: TextStyle(fontWeight: FontWeight.w300),),
+                      const SizedBox(width: 5.0,),
+                      Container(
+                        height: 35.0,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(3.0),
+                            border: Border.all(
+                                width: 0.3,
+                                color: Colors.grey
+                            )
+                        ),
+                        child: Center(
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                child: SvgPicture.asset(
+                                  "assets/icons/mixed_fill.svg",
+                                  //color: Colors.grey,
+                                  height: 25.0,
+                                  width: 25.0,
+                                ),
+                              ),
+                              const VerticalDivider(color: Colors.grey, width: 0.01,),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                child: Icon(Icons.arrow_drop_down_rounded),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10.0,),
+                      const Text("Outline", style: TextStyle(fontWeight: FontWeight.w300),),
+                      const SizedBox(width: 5.0,),
+                      Container(
+                        height: 35.0,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(3.0),
+                            border: Border.all(
+                                width: 0.3,
+                                color: Colors.grey
+                            )
+                        ),
+                        child: Center(
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                child: SvgPicture.asset(
+                                  "assets/icons/no_fill.svg",
+                                  height: 25.0,
+                                  width: 25.0,
+                                ),
+                              ),
+                              const VerticalDivider(color: Colors.grey, width: 0.01,),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 5.0),
+                                child: Icon(Icons.arrow_drop_down_rounded),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 5.0,),
+                      ValueTextField(
+                        controller: name,
+                        width: size.width*0.035,
+                        hintText: "Name",
+                      ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/copy.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Copy", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/paste.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Paste", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/delete.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Delete", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/flip_horizontal.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Flip Horizontal", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10.0,),
+                      InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/flip_vertical.svg",
+                              color: Theme.of(context).primaryColor,
+                              height: 25.0,
+                              width: 25.0,
+                            ),
+                            const Text("Flip Vertical", style: TextStyle(fontSize: 11.0),)
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Divider(color: Colors.grey,),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 80.0,
+                        height: size.height,
+                        child: GridView.count(
+                          crossAxisCount: 2,
+                          shrinkWrap: true,
+                          children: List.generate(paintTools.length, (index) {
+                            PaintTool tool = paintTools[index];
+                            bool isSelected = selectedTool == tool.name;
 
+                            return InkWell(
+                              hoverColor: Colors.transparent,
+                              onTap: () {},
+                              child: Container(
+                                height: 35.0,
+                                width: 35.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  color: isSelected ? Theme.of(context).primaryColor : Colors.transparent
+                                ),
+                                child: Center(
+                                  child: SvgPicture.asset(
+                                    tool.imageUrl!,
+                                    color: isSelected ? Colors.white : Colors.grey,
+                                    height: 25.0,
+                                    width: 25.0,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
