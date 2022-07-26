@@ -42,26 +42,71 @@ class _AfribloxPaintState extends State<AfribloxPaint> {
                 //color: Colors.white,
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: List.generate(backdrops.length, (index) {
                         Backdrop backdrop = backdrops[index];
                         bool isSvg = backdrop.md5!.split(".").last == "svg";
                         String imageUrl = "assets/static/${backdrop.md5}";
 
-                        return  Padding(
+                        return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 5.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(5.0),
-                            child: isSvg ? SvgPicture.asset(
-                                imageUrl,
-                                width: size.width,
-                                height: 80.0,
-                                fit: BoxFit.cover,
-                                semanticsLabel: backdrops.last.name
-                            ) : Image.asset(imageUrl, width: size.width,  height: 80.0,fit: BoxFit.cover,),
+                          child: Container(
+                            height: 90.0,
+                            //width: size.width,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                border: Border.all(
+                                    color: Theme.of(context).primaryColor.withOpacity(0.4),
+                                    width: 4.0
+                                )
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  border: Border.all(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 1.0
+                                  )
+                              ),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    child: isSvg ? SvgPicture.asset(
+                                        imageUrl,
+                                      fit: BoxFit.cover,
+                                    ) : Image.asset(imageUrl, fit: BoxFit.cover,),
+                                  ),
+                                  Container(
+                                    width: size.width,
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.vertical(bottom: Radius.circular(5.0)),
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: Center(child: Text(backdrop.name!, style: const TextStyle(fontSize: 10.0, color: Colors.white),)),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                           ),
                         );
+
+                        // return  Padding(
+                        //   padding: const EdgeInsets.symmetric(vertical: 5.0),
+                        //   child: ClipRRect(
+                        //     borderRadius: BorderRadius.circular(5.0),
+                        //     child: isSvg ? SvgPicture.asset(
+                        //         imageUrl,
+                        //         width: size.width,
+                        //         height: 80.0,
+                        //         fit: BoxFit.cover,
+                        //         semanticsLabel: backdrops.last.name
+                        //     ) : Image.asset(imageUrl, width: size.width,  height: 80.0,fit: BoxFit.cover,),
+                        //   ),
+                        // );
                       }),
                     ),
                   ),
@@ -295,8 +340,8 @@ class _AfribloxPaintState extends State<AfribloxPaint> {
                       const SizedBox(width: 5.0,),
                       ValueTextField(
                         controller: name,
-                        width: size.width*0.035,
-                        hintText: "Name",
+                        width: size.width*0.045,
+                        hintText: "0",
                       ),
                       const SizedBox(width: 10.0,),
                       InkWell(
@@ -305,7 +350,7 @@ class _AfribloxPaintState extends State<AfribloxPaint> {
                           children: [
                             SvgPicture.asset(
                               "assets/icons/copy.svg",
-                              color: Theme.of(context).primaryColor,
+                              //color: Theme.of(context).primaryColor,
                               height: 25.0,
                               width: 25.0,
                             ),
@@ -320,7 +365,7 @@ class _AfribloxPaintState extends State<AfribloxPaint> {
                           children: [
                             SvgPicture.asset(
                               "assets/icons/paste.svg",
-                              color: Theme.of(context).primaryColor,
+                              //color: Theme.of(context).primaryColor,
                               height: 25.0,
                               width: 25.0,
                             ),
@@ -380,7 +425,7 @@ class _AfribloxPaintState extends State<AfribloxPaint> {
                     children: [
                       SizedBox(
                         width: 80.0,
-                        height: size.height,
+                        //height: size.height,
                         child: GridView.count(
                           crossAxisCount: 2,
                           shrinkWrap: true,
@@ -390,7 +435,11 @@ class _AfribloxPaintState extends State<AfribloxPaint> {
 
                             return InkWell(
                               hoverColor: Colors.transparent,
-                              onTap: () {},
+                              onTap: () {
+                                setState(() {
+                                  selectedTool = tool.name!;
+                                });
+                              },
                               child: Container(
                                 height: 35.0,
                                 width: 35.0,

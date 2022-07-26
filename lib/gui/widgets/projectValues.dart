@@ -215,7 +215,7 @@ class _ProjectValuesState extends State<ProjectValues> {
                                               ),
                                               child: Padding(
                                                 padding: const EdgeInsets.all(2.0),
-                                                child: Center(child: Text(sprite.name!, style: const TextStyle(fontSize: 10.0),)),
+                                                child: Center(child: Text(sprite.name!, style: const TextStyle(fontSize: 10.0, color: Colors.white),)),
                                               ),
                                             )
                                           ],
